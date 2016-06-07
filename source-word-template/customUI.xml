@@ -1,0 +1,958 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" onLoad="D8Init" >
+<commands>
+	<command idMso="FileSave" onAction="d8filesave" />
+	<command idMso="FileSaveAs" onAction="d8filesave" />
+</commands>
+
+<ribbon>
+
+<officeMenu>
+
+<splitButton id="d8dsmenumain" insertAfterMso="FileSaveAsMenu"  >
+<button id="d8options" label="Debate Synergy" image="d8logo" onAction="main" />
+<menu itemSize="large" >
+
+	<button id="d8options0"
+        onAction="main"
+        image="d8logo"
+        label="Debate Synergy Options"
+	  description="Configure Debate Synergy user options."
+    />   
+
+	<menuSeparator id="mensep1" />
+
+	<button id="d8spauto"
+		image="d8autofolder"
+		label="AutoOpen Folder"
+            onAction="main"
+	 	description="Runs in the background to automatically open all documents in the speech folder."
+            />
+            
+	
+	<button id="d8pdf"
+        onAction="main"
+        image="d8pdfsave"
+        label="Convert to PDF"
+	  description="Convert the document to a PDF."
+    />
+
+    <button id="d8sess"
+        onAction="main"
+        imageMso="WindowSaveWorkspace"
+        label="Save Session"
+    	  description="Save all documents and restore them at the next application launch."
+    />
+    <button id="d8recover"
+        onAction="main"
+        image="d8autorecover"
+        label="AutoRecovery Files"
+ 	  description="View folder with Word AutoRecovery files."
+    />
+	
+ <button id="d8merge"
+        onAction="main"
+        imageMso="ReviewCompareMenu"
+
+        label="Merge Documents"
+ 	  description="Merge multiple documents using file titles as block headers."
+    />
+
+
+        
+
+</menu>
+</splitButton >
+
+</officeMenu>
+
+
+<tabs>
+<tab id="D8DebateTab" label="Debate" insertBeforeMso="TabHome" keytip="X">
+
+<group id="d8view" label="   Paperless" getVisible="show">
+    <dynamicMenu id="d8win"
+        size="large"
+	  keytip="W"
+	  getVisible="show"
+        imageMso="WindowSwitchWindowsMenuWord"
+        label="Windows"
+        getContent="w_fill"
+	  supertip="Switch between document windows and view modes. (Ctrl+Tab to flip through documents.)"
+    />
+
+	<button 
+	description="Read speech full screen. Esc to exit. (Shortcut is ` while in speech)" 
+	id="d8spread" 
+	label="Read Speech" 
+	getVisible="show"
+	size="large"
+	imageMso="ZoomFitToWindow" 
+	onAction="main"/>
+
+
+	<button description="View the Excel flow and the Word speech side-by-side." 
+	id="winsbs" 
+	getVisible="show"
+	image="d8sbs" 
+	size="large"
+	label="Flow Side-by-Side" 
+	onAction="w_flow" />
+
+
+      <gallery id="d8speech"
+    	label="Speech"
+    size="large" 
+    rows="3"
+    columns="4"
+    onAction="sp_main"
+image="d8ssend"
+	  getVisible="show"
+    showItemLabel="false"
+	supertip="Adds current selection to the speech. (Multi-function shortcut is the ` key.)"
+	>
+			
+
+
+            <item id="d8spadd2"
+                image="d8ssend"
+                label="Add Selection to Speech"
+		
+supertip="Adds current selection to the speech. (Shortcut is the ` key below Esc)"
+     
+                            />
+            
+            <item id="d8spblock"
+                image="d8sblock"
+                label="Add Block to Speech"
+                  	supertip="Adds current block to the speech. (Press ` after clicking on Document Map entry)"
+                     />
+            
+
+            
+            <item id="d8spsave"
+                image="d8spsave"
+                label="Save Speech to USB"
+                   supertip="Save current speech to USB and to the Speech Save folder. (Ctrl+Shift+S)"
+                    />
+            
+            <item id="d8spbr"
+                image="d8spbreak"
+                label="Stopped Reading Marker"
+	  
+           supertip="Inserts a Stopped Reading Here marker. (Press ` in Read Speech mode)"
+         
+            />
+
+            
+            <item id="d81NC"
+                label="New 1NC Speech"
+                image="d8s1nc"
+            />
+            
+            <item id="d82NC"
+                label="New 2NC Speech"
+               image="d8s2nc"
+            />
+            <item id="d81NR"
+                label="New 1NR Speech"
+               image="d8s1nr"
+            />
+            <item id="d82NR"
+                label="New 2NR Speech"
+               image="d8s2nr"
+            />
+		<item id="d81AR"
+                label="New 1AR Speech"
+			 image="d8s1ar"
+            />
+		<item id="d82AC"
+            label="New 2AC Speech"
+            image="d8s2ac"
+            />
+            <item id="d82AR"
+                label="New 2AR Speech"
+               image="d8s2ar"
+            />
+
+	</gallery>
+	<button 
+	description="Save current speech to USB and to the Speech Save folder. (Ctrl+Shift+S)" 
+	id="d8spsave2" 
+	label="Save to USB" 
+	getVisible="show"
+	size="large"
+	image="d8spsave"
+	onAction="main"/>
+
+<button 
+	description="Inserts a Stopped Reading Here marker. (Ctrl+`)" 
+	id="d8spbr2" 
+	label="Stopped Marker" 
+	getVisible="show"
+	size="large"
+	image="d8spbreak"
+	onAction="main"/>
+    	
+
+    <dynamicMenu id="d8expmain"
+        size="large"
+        image="d8tub"
+        label="Tubs"
+	  keytip="X"
+	  getVisible="show"
+        getContent="x_fill"
+        supertip="Expandos organize multiple files for faster access. Click on a pocket to paste from the pocket to the current document. Shift-click to open the pocket and paste into it any selected text. Control-click to delete the pocket."
+    />
+    <dialogBoxLauncher>
+        <button id="d8options1" onAction="main" />
+    </dialogBoxLauncher>
+</group>
+
+
+
+<group id="d8use" label="      Standard" 	  getVisible="show">
+    <box id="row1">
+        <comboBox idMso="Font" />
+        <comboBox idMso="FontSize" />
+        <buttonGroup id="g1">
+            <button idMso="IndentDecreaseWord" />	
+		<button idMso="IndentIncreaseWord" />	
+		<control idMso="NumberingGalleryWord" showLabel="false" />
+		<control idMso="ChangeCaseGallery" />
+        </buttonGroup>
+    </box>
+    <box id="row2">
+        <buttonGroup id="g2">
+            <toggleButton idMso="Bold" keytip="B"/>
+            <toggleButton idMso="Italic" keytip="I"/>
+
+            <control  showLabel="false" idMso="UnderlineGallery" keytip="U2"/>
+		
+	</buttonGroup >
+		<buttonGroup id="g3">
+            
+            <gallery idMso="TextHighlightColorPicker" />
+            <toggleButton idMso="AlignLeft" />
+            <toggleButton idMso="AlignCenter" />
+            <menu idMso="LineSpacingMenu" showLabel="false" />
+		<control idMso="BreaksGallery" showLabel="false" />
+
+
+        </buttonGroup>
+    </box>
+    <box id="boxc">
+        <button idMso="FontDialog" />
+        <button idMso="ParagraphDialog" />
+        <button idMso="PageSetupDialog"  label="Page" />
+   	  <button idMso="StylesPane" label="Style" />
+
+    </box>
+    
+    <dialogBoxLauncher>
+        <button id="d8options2" onAction="main" />
+    </dialogBoxLauncher>
+</group>
+
+
+    
+<group id="d8form" label="      Formatting"  getVisible="show"  >
+    <splitButton id="d8pastemain" size="large" getVisible="show" >
+        <button id="d8rpaste"
+            label="Paste Text"
+            onAction="main"
+            imageMso="Paste"
+		
+	 	supertip="Pastes text without formatting. Expand for more options. (Ctrl+G)"
+        />
+        <menu id="d8pasting" itemSize="large">
+            
+            
+            <button id="d8rpaste2"
+                imageMso="Paste"
+                label="Paste Text"
+                onAction="main"
+	 	    description="Pastes text without formatting.  (Ctrl+G)" 
+            />
+            <button id="d8rpastereturns"
+                image="d8pastereturns"
+                label="Paste Text without Returns"
+		    keytip="G"
+                onAction="main"
+	 	    description="Pastes text without formatting and without returns. (Ctrl+Alt+G)"
+            />
+            
+            
+<button id="d8rpasteurl"
+                image="d8pasteurl"
+                label="Paste Text with URL"
+                onAction="main"
+		    description="Pastes text without formatting and with the URL from the top-most Firefox or Internet Explorer window."
+            />
+
+            <menuSeparator id="menusep" />
+            
+            <button id="d8rpastecb" 
+		image="d8pasteboard"
+		label="Show Clipboard"
+		onAction="main"
+
+		description="Show clipboard with the 24 most recently copied items."
+		/>
+        </menu>
+    </splitButton>
+    
+    <button size="large"
+ 	getVisible="show"
+        id="d8rreturns"
+        label="Remove Returns"
+        onAction="main"
+        keytip="R"
+        image="d8returns"
+	  supertip="Removes returns (line breaks) from selection. (Ctrl+R)"
+    />
+    
+    <button size="large"
+        id="d8rcite"
+	  getVisible="show" 
+        label="Create Cite"
+        image="d8cite"
+        onAction="main"
+	  keytip="T"
+	  supertip="Creates cite from a selection containing title IN QUOTES, author lastname preferably IN BOLD, author firstname, date, url, and quals. Works especially well with Lexis News and Lexis Law. (Ctrl+T)"
+    />
+    
+    <separator id="mainSep" />
+
+    <splitButton id="d8ftogglemain" size="large" getVisible="show">
+        <button id="d8ftoggle"
+            label="Underline"
+            image="d8ftoggle"
+            onAction="main"
+	      supertip="Toggle between underlining and downsizing the selection. (F1)"
+        />
+        <menu itemSize="large">
+            <button id="d8ftoggle2"
+                label="Underline Toggle"
+                image="d8ftoggle"
+                onAction="main"
+	         description="Toggle between underlining and downsizing the selection. (F1)"
+            />
+            
+            <button id="d8fsmall"
+                label="Small-size All"
+                image="d8fsmallall"
+                onAction="main"
+	         description="Sets non-underlined, non-bolded text in selection to small size, and underlined or bolded text to normal size. (Ctrl+F1)"
+            />
+
+		<button id="d8fsmallmore"
+                label="Small-size All More"
+		    image="d8fsmallallmore"
+                onAction="main"
+	          description="Downsizes non-underlined, non-bolded text in selection. (Ctrl+Alt+F1)"
+            />
+
+		<button id="d8fsmallauto"
+                label="Underline Auto-Toggle"
+		    onAction="main"
+	          description="Auto-underlines any selected text. Press esc to stop."
+            />
+        </menu>
+    </splitButton>
+    
+    <splitButton id="d8fnormalmain" size="large" getVisible="show">
+        <button id="d8fnormal"
+            label="Normal"
+            onAction="main"
+            image="d8fnormal"
+	      supertip="Sets the selection into the template default style, but preserves underlining. (F2)"
+        />
+        <menu itemSize="large">
+            <button id="d8fnormal2"
+                label="Normal"
+                onAction="main"
+                image="d8fnormal"
+	          description="Sets the selection into the template default style, but preserves underlining. (F2)"
+            />
+            
+		<button id="d8fsimilar"
+                label="Select Similar"
+                onAction="main"
+		    image="d8fsimilar"
+                description="Select text similar to current selection. (Ctrl+F2)"
+            />
+
+		<button id="d8fclear" 
+			description="Clears all formatting from selection."
+			label="Clear Formatting"
+                	onAction="main"
+			image="d8fclear" />
+      </menu>
+    </splitButton>
+		
+	<splitButton id="d8fheadingmain" size="large" getVisible="show">
+        <button id="d8fheading"
+            label="Heading"
+            image="d8fheading"
+            onAction="main"
+	  	supertip="Sets selection as block heading. (F3)"
+        />
+        <menu itemSize="large">
+            <button id="d8fheading2"
+                label="Heading"
+                onAction="main"
+                image="d8fheading"
+	          description="Set selection as block heading. (F3)"
+            />
+            
+            <button id="d8fhat"
+                label="Hat"
+                onAction="main"
+                image="d8fhat"
+	          description="Sets selection as section heading.  (Ctrl+F3)"
+            />
+
+
+        <button id="d8fheadingnot"
+            label="Remove from Document Map"
+            onAction="main"
+		image="d8fheadingnot"					
+		description="Removes the selection from appearing in the document map. (Ctrl+Alt+F3)"
+        />
+
+            
+        </menu>
+    </splitButton>
+    
+    <splitButton id="d8fhighlitemain" size="large" getVisible="show">
+        <button id="d8fhighlite"
+            label="Highlight"
+            onAction="main"
+            image="d8fhighlite"
+		supertip="Highlights selection. (F4)"
+        />
+        <menu itemSize="large">
+            <button id="d8fhighlite2"
+                label="Highlight"
+                onAction="main"
+                image="d8fhighlite"
+		    description="Highlights selection. (F4)"
+            />
+            
+            <button id="d8fbox"
+                label="Box"
+                onAction="main"
+                image="d8fbox"
+		   description="Puts box around selection. (Ctrl+F4)"
+            />
+        </menu>
+    </splitButton>    
+
+    <dialogBoxLauncher>
+        <button id="d8options4" onAction="main" />
+    </dialogBoxLauncher>
+</group>
+
+<group id="d8format" label="      Advanced" getVisible="show" >
+
+    <menu id="d8fixmain"
+	  getVisible="show" 
+        size="large"
+        label="Format Fixes"
+	  image="d8fix"
+	  supertip="Expand to view a selection of the various possible formating fixes."
+	  itemSize="large">
+        <button id="d8xauto"
+            label="Reformat in template default"
+            onAction="main"
+		imageMso="ViewDocumentActionsPane"
+		description="Reformats the document into the template appearance, including margins, headings, styles, and table of contents."
+        />
+        <button id="d8xblnk"
+            label="Remove blank pages"
+            onAction="main"
+		image="d8xblanks"
+		description="Removes all blank pages in the entire document and displays number removed in the status bar."
+        />
+        <button id="d8xlink"
+            label="Remove hyperlinks"
+            onAction="main"
+		image="d8xlinks"
+		description="Removes all hyperlinks in the entire document and displays number removed in the status bar."
+        />
+        <button id="d8xcaps"
+            label="Format in Smart Title Case"
+            onAction="main"
+		imageMso="FormControlLabel"
+		description="Formats the Selection in Title Case, Except Words Like and, is, or. (Ctrl+K)"
+        />
+        <button id="d8xcreq"
+            label="Create partial-text cite"
+            onAction="main"
+		image="d8citereq"
+		description="Deletes all but the first and last words from the selection or current paragraph, then copies the cite. (Ctrl+Q)"
+        />
+        <button id="d8xcont"
+            label="Insert page continued"
+            onAction="main"
+		imageMso="PageBreakInsertOrRemove"
+		description="Inserts a page continuation marker and starts a new page with the same header as the current page. (Ctrl+Alt+Enter)"
+        />
+    </menu>
+    
+	
+
+
+
+
+	<splitButton id="d8fcommain" size="large" getVisible="show" >
+        <button id="d8cadd1"
+            label="Warrants"
+	 	image="d8warrant"
+            onAction="main"
+        />
+        <menu itemSize="large">
+            <button id="d8cadd2"
+              label="Add Warrant Extension" 
+	 	  image="d8warrant"
+              onAction="main"
+description="Select a card tag and click here to add a comment box for a warrants extension. (F9) "
+
+            />
+
+
+	    <checkBox id="d8cshow"
+                label="Display Warrant Extensions"
+                onAction="c_click"
+	
+description="Show/hide all warrant extensions in this document. (Ctrl+F9)"
+			getPressed="c_show"
+
+            />
+        </menu>
+    </splitButton>    
+
+    
+    
+    <button id="d8pageheader"
+        size="large"
+	  getVisible="show" 
+        label="Page Header"
+        onAction="main"
+        image="d8header"
+	  supertip="Inserts the page header, containing your username, teamname, page number/total pages, and document title. (F11)" 
+    />
+   
+     <button id="d8toc"
+        size="large"
+	 getVisible="show" 
+        label="Update TOC"
+        onAction="main"
+        imageMso="TableOfContentsDialog"
+	  supertip="Inserts (or updates) a front page containing the document title and a table of contents. Choose in Debate Synergy Options whether to remove similar entries. (F12)"
+    />
+
+
+
+        
+    <separator id="qualsep"  getVisible="show" />
+    
+    <box id="qualbox" boxStyle="vertical" >
+    
+        <labelControl id="quallabel"    getVisible="show" 
+		label="Show Quality"
+		supertip="Select which quality of evidence to show in the document. Evidence quality must be rated beforehand using the stars below."
+	  />
+        
+        <dropDown id="showonly"  getVisible="show" 
+            onAction="q_show"
+		keytip="0"
+		supertip="Select which quality of evidence to show in the document. Evidence quality must be rated beforehand using the stars below."
+            sizeString="wwwww">
+            <item id="q0s" label="Show All" />
+            <item id="q3s" label="Best" />
+            <item id="q2s" label="Medium" />
+            <item id="q1s" label="Worst" />
+        </dropDown>
+        
+        <buttonGroup id="ratings">
+            <button id="q1"
+                image="s1"
+                onAction="q_rate"
+				 getVisible="show" 
+		    keytip="3"
+		    supertip="Assigns the Worst rating to the current selection."
+            />
+            <button id="q2"
+                image="s2"
+                onAction="q_rate"
+					 getVisible="show" 
+		    keytip="2"
+	          supertip="Assigns the Medium rating to the current selection."
+            />
+            <button id="q3"
+                image="s3"
+					 getVisible="show" 
+		    keytip="1"
+                onAction="q_rate"
+	   	    supertip="Assigns the Best rating to the current selection."
+            />
+        </buttonGroup>
+    </box>
+
+	
+	<separator id="fssep"   getVisible="show" />
+    
+    <box id="fsbox" boxStyle="vertical"  >
+    
+
+	<labelControl id="fslabel" 
+		label="  File Search" 
+		 getVisible="show"
+		/>
+
+
+    <editBox id="fsinput"
+        onChange="s_go"
+		 getVisible="show"
+        sizeString="wwwwwww"
+        supertip="Type text here and press Enter to search the Debate Folder. The Everything Search Engine from voidtools.com must be installed."
+    />
+
+	</box>
+
+
+	<button id="d8options7"
+        size="large"
+	 getVisible="show" 
+        label="Options"
+        onAction="main"
+        image="d8logo"
+	  supertip="Show Debate Synergy options."
+    />
+
+    
+    <dialogBoxLauncher>
+        <button id="d8options5" onAction="main" />
+    </dialogBoxLauncher>
+</group>
+
+
+</tab>
+
+
+
+
+
+
+
+<tab id="D8Tab2003" label="2003 Menu" insertAfterMso="TabHome" keytip="Z" getVisible="toolbar03" >
+
+<group id="mnuNomeK" label="2003 Menu">
+<box id="Row1" boxStyle="horizontal">
+<menu id="mnuFile" label="File" keytip="F" >
+	<control idMso="FileNew" /> 
+	<control idMso="FileOpen" /> 
+	<control idMso="FileClose" /> 
+	<menuSeparator id="mnuFile01"/>
+	<control idMso="FileSave" /> 
+	<control idMso="FileSaveAsMenu" /> 
+	<control idMso="FileSaveAsWebPage" /> 
+	<menuSeparator id="mnuFile02"/>
+	<control idMso="FilePermissionRestrictMenu" />
+	<menuSeparator id="mnuFile03"/>
+	<control idMso="WebPagePreview" />
+	<menuSeparator id="mnuFile04"/>
+	<control idMso="PageSetupDialog" />
+	<control idMso="FilePrintPreview" />
+	<control idMso="FilePrint" />
+	<menuSeparator id="mnuFile05"/>
+	<control idMso="FileSendMenu" />
+	<control idMso="AdvancedFileProperties" label="Properties"/>
+	<menuSeparator id="mnuFile06"/>
+	<control idMso="FileExit" />
+</menu>
+		
+<menu id="mnuEdit" label="Edit" keytip="E" >
+	<control idMso="Undo" /> 
+	<control idMso="Redo" /> 
+	<menuSeparator id="mnuEdit01"/>
+	<control idMso="Cut" /> 
+	<control idMso="Copy" /> 
+	<control idMso="ShowClipboard" /> 
+	<control idMso="Paste" /> 
+	<control idMso="PasteSpecialDialog" /> 
+	<control idMso="PasteAsHyperlink" /> 
+	<menuSeparator id="mnuEdit02"/>
+	<control idMso="ClearMenuWord" />
+	<control idMso="SelectAll" />
+	<menuSeparator id="mnuEdit03"/>
+	<control idMso="FindDialog" />
+	<control idMso="ReplaceDialog" />
+	<control idMso="GoTo" />
+	<menuSeparator id="mnuEdit04"/>
+	<control idMso="FileLinksToFiles" visible="true"/>
+	<control idMso="ObjectEditDialog" />
+</menu>
+
+<menu id="mnuView" label="View" keytip="V" >
+	<control idMso="ViewDraftView" />
+	<control idMso="ViewWebLayoutView" />
+	<control idMso="ViewPrintLayoutView" />
+	<control idMso="ViewFullScreenReadingView" />
+	<control idMso="ViewOutlineView" />
+	<menuSeparator id="mnuView01"/>
+	<control idMso="ViewRulerWord" />
+	<menuSeparator id="mnuView02"/>	
+	<control idMso="ViewDocumentMap" />
+	<control idMso="ViewThumbnails" />
+	<menuSeparator id="mnuView03"/>
+	<control idMso="HeaderFooterEditHeader" />
+	<control idMso="FootnotesEndnotesShow" />
+	<control idMso="ReviewShowMarkupMenu" />
+	<menuSeparator id="mnuView04"/>
+	<control idMso="ViewFullScreenView" />
+	<control idMso="ZoomDialog" />
+</menu>
+
+<menu id="mnuInsert" label="Insert" keytip="I" >
+	<control idMso="BreakInsertDialog" />
+	<control idMso="HeaderFooterPageNumberInsert" />
+	<control idMso="DateAndTimeInsert" />
+	<control idMso="QuickPartsInsertGallery" />
+	<control idMso="FieldInsert" />
+	<control idMso="SymbolInsertGallery" />
+	<control idMso="ReviewNewComment" />
+	<menuSeparator id="mnuInsert01"/>
+	<menu id="mnuIns1" label="Reference" >
+		<control idMso="FootnoteInsert" />
+		<control idMso="CaptionInsert" />
+		<control idMso="CitationInsert" />
+		<control idMso="CrossReferenceInsert" />
+		<control idMso="IndexAndTables" />
+	</menu>
+	<control idMso="WebComponent" />
+	<menuSeparator id="mnuInsert02"/>
+	<menu id="mnuIns2" label="Picture" >
+		<control idMso="ClipArtInsert" />
+		<control idMso="PictureInsertFromFile" />
+		<menuSeparator id="mnuBenSep01"/>
+		<control idMso="InkDrawingAndWriting" />
+		<control idMso="DrawingCanvasInsert" />
+		<control idMso="ShapesInsertGallery" />
+		<control idMso="WordArtInsertGalleryClassic" />
+		<control idMso="SmartArtInsert" />
+		<control idMso="ChartInsert" />
+	</menu>
+	<control idMso="InsertBuildingBlocksEquationsGallery" />
+	<control idMso="TextBoxInsertGallery" />
+	<control idMso="TextFromFileInsert" />
+	<control idMso="OleObjectctInsert" />
+	<control idMso="BookmarkInsert" />
+	<control idMso="HyperlinkInsert" />
+
+</menu>
+<menu id="mnuFormat" label="Format" keytip="o" >
+	<control idMso="FontDialog" />
+	<control idMso="ParagraphDialog" />
+	<control idMso="BulletsAndNumberingBulletsDialog" />
+	<control idMso="BordersShadingDialog" />
+	<menuSeparator id="mnuFormat01"/>
+	<control idMso="ColumnsDialog" />
+	<control idMso="TabsDialog" />
+	<control idMso="DropCapOptionsDialog" />
+	<control idMso="TextDirectionGalleryWord" />
+	<control idMso="TextDirectionOptionsDialog" />
+	<control idMso="ChangeCaseDialogClassic" />
+	<menuSeparator id="mnuFormat03"/>
+	<control idMso="PageColorPicker" />
+	<control idMso="ThemesGallery" />
+	<control idMso="FramesetMenu" />
+	<control idMso="AutoFormat" />
+	<control idMso="StylesPane" />
+	<control idMso="RevealFormatting" />
+	<menuSeparator id="mnuFormat04"/>
+	<control idMso="ObjectEditDialog" />
+</menu>
+<menu id="mnuTools" label="Tools" keytip="T" >
+	<control idMso="SpellingAndGrammar" />
+	<control idMso="ResearchPane" />
+	<menu id="mnuTools1" label="Language" >
+		<control idMso="SetLanguage" />
+		<control idMso="Translate" />
+		<control idMso="Thesaurus" />
+		<control idMso="HyphenationOptions" />
+	</menu>
+	<control idMso="WordCount" />
+	<control idMso="AutoSummarize" />
+	<menuSeparator id="mnuTools01"/>
+	<control idMso="FileCreateDocumentWorkspace" />
+	<control idMso="ReviewTrackChangesMenu" />
+	<control idMso="CompareAndCombine" />
+	<control idMso="ProtectDocument" />
+	<menuSeparator id="mnuTools02"/>
+	<menu id="mnuTools2" label="Letters and Mailings" >
+		<control idMso="MailMergeWizard" />	
+		<control idMso="EnvelopesAndLabels" />
+	</menu>
+	<menuSeparator id="mnuTools03"/>
+	<menu id="mnuTools3" label="Macro" >
+		<control idMso="PlayMacro" />
+		<control idMso="MacroRecord" />
+		<control idMso="MacroSecurity" />
+		<menuSeparator id="mnuTools04"/>
+ 		<control idMso="VisualBasic" />
+	</menu>
+	<control idMso="DocumentTemplate" />
+	<control idMso="AutoCorrect" />
+	<control idMso="QuickAccessToolbarCustomization" />
+	<control idMso="ApplicationOptionsDialog" />	
+</menu>
+
+<menu id="mnuTable" label="Table" keytip="a" >
+	<control idMso="TableDrawTable" />
+	<menu id="mnuTable1" label="Insert" >
+		<control idMso="TableInsertDialogWord" />
+		<menuSeparator id="mnuTable01"/>
+		<control idMso="TableColumnsInsertLeft" />
+		<control idMso="TableColumnsInsertRight" />
+		<menuSeparator id="mnuTable02"/>
+		<control idMso="TableRowsInsertAboveWord" />
+		<control idMso="TableRowsInsertBelowWord" />
+		<menuSeparator id="mnuTable03"/>
+		<control idMso="TableInsertCellsDialog" />
+	</menu>
+	<control idMso="TableDeleteRowsAndColumnsMenuWord" />
+	<menu id="mnuTable2" label="Select" >
+		<control idMso="TableSelect" />
+		<control idMso="TableColumnSelect" />
+		<control idMso="TableRowSelect" />
+	</menu>
+	<control idMso="MergeCells" />
+	<control idMso="SplitCells" />
+	<control idMso="TableSplitTable" />
+	<menuSeparator id="mnuTable04"/>	
+	<control idMso="TableAutoFormat" />	
+	<control idMso="TableAutoFitMenu" />
+	<control idMso="TableRepeatHeaderRows" />
+	<menuSeparator id="mnuTable05"/>
+	<menu id="mnuTable3" label="Convert" >
+		<control idMso="ConvertTextToTable" />
+		<control idMso="ConvertTableToText" />
+	</menu>
+	<control idMso="SortDialogClassic" />
+	<control idMso="TableFormulaDialog" />
+	<control idMso="TableShowGridlines" />
+	<menuSeparator id="mnuTable06"/>
+	<control idMso="TablePropertiesDialog" />
+</menu>
+<menu id="mnuWindow" label="Window" keytip="W" >
+	<control idMso="WindowNew" />
+	<control idMso="WindowsArrangeAll" />
+	<control idMso="WindowSideBySide" />
+	<control idMso="WindowSplit" />
+	<menuSeparator id="mnuWindow01"/>
+	<control idMso="WindowSwitchWindowsMenuWord" />
+</menu>
+<menu id="mnuHelp" label="Help" keytip="H">
+	<control idMso="Help" />
+</menu>
+</box>
+<box id="Row2" boxStyle="horizontal"> 
+<buttonGroup id="Row2Group1">
+	<control idMso="FileNewDefault" showLabel="false" />
+	<control idMso="FileOpen" showLabel="false" /> 
+	<control idMso="FileSave" showLabel="false" />
+	<control idMso="ReviewRestrictFormatting" showLabel="false" imageMso="FilePermissionRestrictMenu" /> 
+</buttonGroup>
+
+<buttonGroup id="Row2Group2">
+	<control idMso="FilePrintQuick" showLabel="false" />
+	<control idMso="FilePrintPreview" showLabel="false" />  
+</buttonGroup>
+
+<buttonGroup id="Row2Group3">
+	<control idMso="Spelling" showLabel="false" />
+	<control idMso="ResearchPane" showLabel="false" />  
+</buttonGroup>
+
+<buttonGroup id="Row2Group4">
+	<control idMso="Cut" showLabel="false" />
+	<control idMso="Copy" showLabel="false" /> 
+	<control idMso="Paste" showLabel="false" />
+	<control idMso="FormatPainter" showLabel="false" />
+</buttonGroup>
+
+<buttonGroup id="Row2Group5">
+	<control idMso="Undo" showLabel="false" />
+	<control idMso="Redo" showLabel="false" /> 
+</buttonGroup>
+
+
+<buttonGroup id="Row2Group6">
+	<control idMso="HyperlinkInsert" showLabel="false" /> 
+	<control idMso="TableDrawTable" showLabel="false" />
+	<control idMso="TableInsertGallery" showLabel="false" /> 
+	<control idMso="TableExcelSpreadsheetInsert" showLabel="false" />
+	<control idMso="TableColumnsGallery" showLabel="false" />
+	<control idMso="DrawingCanvasInsert" showLabel="false" />
+</buttonGroup>
+
+<buttonGroup id="Row2Group7">
+	<toggleButton idMso="ViewDocumentMap" showLabel="false" visible="true"/>
+	<control idMso="ParagraphMarks" showLabel="false" />
+	<control idMso="ZoomDialog" showLabel="false" />
+	<control idMso="Help" showLabel="false" />
+</buttonGroup>
+
+
+<buttonGroup id="Row2Group8">
+	<control idMso="ViewFullScreenReadingView" label="Read" />
+</buttonGroup>
+
+</box>
+<box id="Row3" boxStyle="horizontal"> 
+<box id="Belowbox1" boxStyle="horizontal">
+	<control idMso="StylesPane" showLabel="false" />
+	<control idMso="StyleGalleryClassic" showLabel="false" />
+	<control idMso="Font" showLabel="false" />
+	<control idMso="FontSize" showLabel="false" />  
+</box>
+
+<buttonGroup id="Row3Group1">
+	<control idMso="Bold" showLabel="false" />
+	<control idMso="Italic" showLabel="false" /> 
+	<control idMso="UnderlineGallery" showLabel="false" />
+</buttonGroup>
+
+<buttonGroup id="Row3Group2">
+	<control idMso="AlignLeft" showLabel="false" />
+	<control idMso="AlignCenter" showLabel="false" /> 
+	<control idMso="AlignRight" showLabel="false" />
+	<control idMso="AlignJustify" showLabel="false" />
+	<control idMso="LineSpacingMenu" showLabel="false" />
+</buttonGroup>
+
+<buttonGroup id="Row3Group3">
+	<control idMso="NumberingGalleryWord" showLabel="false" />
+	<control idMso="BulletsGalleryWord" showLabel="false" /> 
+	<control idMso="IndentDecreaseWord" showLabel="false" />
+	<control idMso="IndentIncreaseWord" showLabel="false" />
+</buttonGroup>
+
+<buttonGroup id="Row3Group4">
+	<control idMso="TableBordersMenu" showLabel="false" />
+	<control idMso="TextHighlightColorPicker" showLabel="false" /> 
+	<control idMso="FontColorPicker" showLabel="false" /> 
+</buttonGroup>
+
+</box>
+
+    <dialogBoxLauncher>
+        <button id="d8options6" onAction="main" />
+    </dialogBoxLauncher>
+</group>	
+</tab>	
+</tabs>
+</ribbon>
+</customUI>

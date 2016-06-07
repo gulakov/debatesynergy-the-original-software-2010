@@ -1,0 +1,102 @@
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" >
+
+<commands>
+	<command idMso="FileSave" onAction="D8_Save" />
+</commands>
+
+<ribbon>
+<officeMenu>
+	<button id="d8options0"
+        onAction="main"
+        image="d8logo"
+        label="Flow Options"
+        supertip="Configure Debate Synergy Flow user options."
+	  description="Configure Debate Synergy Flow user options."
+	  insertAfterMso="FileSaveAsMenu"
+    />   
+	
+</officeMenu>
+<tabs>
+<tab idMso="TabHome">
+
+<group id="d8nav" label="Debate Flow" insertBeforeMso="GroupClipboard">
+
+
+<button id="d8sp" label="Add to Speech" size="large" onAction="main" image="d8speech" supertip="Sends selection from Excel flow to Word Speech document (Shortcut is the ` key below the Escape key)"/>
+
+<separator id="fsep0" />
+
+<button id="d8st" label="Star" size="large" onAction="main" image="d8star" supertip="Highlights cell (F1)"/>
+
+<splitButton id="d8cmmain" size="large">
+<button id="d8cm" label="Comment" onAction="main" imageMso="ReviewNewComment" supertip="Inserts a sticky-note on cell for judging comments or cross-x questions (F2)"/>
+<menu>
+<button id="d8cm2" label="Insert Comment" onAction="main" imageMso="ReviewNewComment" supertip="Inserts a sticky-note on cell for judging comments or cross-x questions (F2)"/>
+<toggleButton idMso="ReviewShowAllComments" label="Display Comments" />
+</menu>
+</splitButton>
+
+<button id="d8nm" label="Number" size="large" onAction="main" imageMso="TripaneViewMode" supertip="Inserts or skips to next 2AC/1NC number (Ctrl+Enter)"/>
+
+<button id="d8gp" label="Group" size="large" onAction="main" imageMso="OutlineGroup" supertip="Group/ungroup cells (Ctrl+G)"/>
+
+<separator id="fsep2" />
+
+<splitButton id="d8rwmain" size="large">
+<button id="d8rw" label="Insert Row" onAction="main" imageMso="SheetRowsInsert" supertip="Inserts row (Ins)"/>
+<menu>
+<button id="d8rw2" label="Insert Row" onAction="main" imageMso="SheetRowsInsert" supertip="Inserts row (Ins)"/>
+<button id="d8ro" label="Insert Overview" onAction="main" imageMso="TableAutoFitContents" supertip="Inserts three rows at the top of the current column (Ctrl+Ins)"/>
+<button id="d8rd" label="Delete Row" onAction="main" imageMso="SheetRowsDelete" supertip="Deletes row (Ctrl+Del)"/>
+</menu>
+</splitButton>
+
+<splitButton id="d8fhmain" size="large">
+<button id="d8fh" label="Hide Flow" onAction="main" imageMso="TableDeleteRowsAndColumnsMenuWord"  supertip="Hides current flow (Ctrl+Backspace)"/>
+<menu>
+<button id="d8fh2" label="Hide Flow" onAction="main" imageMso="SheetDelete"  supertip="Hides current flow (Ctrl+Backspace)"/>
+<button id="d8fa" label="Add Flow" onAction="main" imageMso="SheetInsert"  supertip="Adds flow similar to current flow (Ctrl+Plus Sign)"/>
+</menu>
+</splitButton>
+
+<splitButton id="d8mvmain" size="large">
+<button id="d8mr" label="Move Cells"  onAction="main" imageMso="TableColumnsInsertRight"  supertip="Copies cells right two columns (Ctrl+Right)"/>
+<menu>
+<button id="d8mr2" label="Copy Right (Extend)"  onAction="main" imageMso="TableColumnsInsertRight"  supertip="Copies cells right two columns (Ctrl+Right)"/>
+<button id="d8ml" label="Move Left"  onAction="main" imageMso="TableColumnsInsertLeft"  supertip="Moves cells left a column (Ctrl+Left)" />
+<button id="d8mu" label="Move Up"  onAction="main" imageMso="FillUp"  supertip="Moves cells up a row (Ctrl+Up)"/>
+<button id="d8md" label="Move Down"  onAction="main" imageMso="FillDown"  supertip="Moves cells down a row (Ctrl+Down)"/>
+</menu>
+</splitButton>
+
+
+<separator id="fsep3" />
+
+
+<button id="d8cb" label="Export to Casebook" size="large" onAction="main" image="d8casebook"  supertip="Exports affirmative, negative, and judge info to a casebook located in the Flow folder. (F12)"/>
+
+
+	<dialogBoxLauncher>
+        <button id="d8options" onAction="main" />
+    </dialogBoxLauncher>
+</group>
+
+
+	<group idMso="GroupStyles" visible="false"/>
+	<group idMso="GroupCells" visible="false"/>
+	<group idMso="GroupEditingExcel" visible="false"/>
+</tab>
+<tab idMso="TabReview"> 
+	<group idMso="GroupStyles"/>
+</tab>
+<tab idMso="TabInsert"> 
+	<group idMso="GroupCells"/>
+	<group idMso="GroupEditingExcel"/>
+</tab>
+
+</tabs>
+</ribbon>
+</customUI>
+
+
+ 
